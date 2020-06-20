@@ -2,12 +2,13 @@ cmake_minimum_required(VERSION 3.13)
 project(Labo5)
 
 add_executable(Labo5
-    Customer.cpp
-    Customer.h
-    main.cpp
-    Movie.cpp
-    Movie.h
-    Rental.h)
+        src/Customer.cpp
+        src/Customer.h
+        src/main.cpp
+        src/Movie.cpp
+        src/Movie.h
+        src/Rental.h
+        Test/CustomerTest.cpp)
 
 include(CTest)
 
@@ -40,6 +41,6 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # Trivial example using gtest and gmock
-add_executable(example example.cpp)
+add_executable(example src/Customer.h src/Customer.cpp Test/CustomerTest.cpp)
 target_link_libraries(example gtest gmock_main)
 add_test(NAME example_test COMMAND example)

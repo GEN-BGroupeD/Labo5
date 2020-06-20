@@ -1,0 +1,8 @@
+language: cpp
+
+script:
+  - cmake --build .
+
+after_script:
+  - cmake --build . --target test
+
