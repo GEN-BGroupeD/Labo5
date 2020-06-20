@@ -2,6 +2,7 @@
 #include <sstream>
 #include <vector>
 #include "Customer.h"
+#include "Rental.h"
 
 using std::ostringstream;
 using std::vector;
@@ -19,7 +20,7 @@ string Customer::statement()
     for ( ; iter != iter_end; ++iter ) {
         double thisAmount = 0;
         Rental each = *iter;
-        thisAmount = getAmout(thisAmount, each);
+        thisAmount += each.getAmount();
 
         // add frequent renter points
         frequentRenterPoints++;
@@ -39,21 +40,3 @@ string Customer::statement()
     return result.str();
 }
 
-double Customer::getAmout(double thisAmount, const Rental &each) const {
-    switch (each.getMovie().getPriceCode()) {
-        case Movie::REGULAR:
-            thisAmount += 2;
-            if (each.getDaysRented() > 2)
-                thisAmount += (each.getDaysRented() - 2) * 1.5;
-            break;
-        case Movie::NEW_RELEASE:
-            thisAmount += each.getDaysRented() * 3;
-            break;
-        case Movie::CHILDRENS:
-            thisAmount += 1.5;
-            if (each.getDaysRented() > 3)
-                thisAmount += (each.getDaysRented() - 3) * 1.5;
-            break;
-    }
-    return thisAmount;
-}
