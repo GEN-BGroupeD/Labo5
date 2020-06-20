@@ -76,7 +76,7 @@ TEST(rental_test,ChildrenMovieHaveTheRightPriceWithMoreThanThreeDays){
 
 
 /*
- *Test que les nouveau film sorti avec au maximum un jour d'emprunt ne donne pas de bonus sur le prix
+ *Test que les nouveau film sorti avec au maximum un jour d'emprunt ne donne pas de bonus
  */
 
 TEST(rental_test,newReleaseMovieWithLessThanTwoDayDonTGiveBonus){
@@ -91,7 +91,7 @@ TEST(rental_test,newReleaseMovieWithLessThanTwoDayDonTGiveBonus){
 
 
 /*
- *Test que les nouveau film sorti avec plus d'un jour d'emprunt donne un bonus sur le prix
+ *Test que les nouveau film sorti avec plus d'un jour d'emprunt donne un bonus
  */
 
 TEST(rental_test,newReleaseMovieWithLessMoreThanOneDayDonTGiveBonus){
@@ -105,7 +105,7 @@ TEST(rental_test,newReleaseMovieWithLessMoreThanOneDayDonTGiveBonus){
 }
 
 /*
- *Test que les film pour enfant n'ait pas de prix bonus
+ *Test que les film pour enfant n'ait pas de bonus
  */
 
 TEST(rental_test,NoBonusOnChildrenMovie){
@@ -119,7 +119,7 @@ TEST(rental_test,NoBonusOnChildrenMovie){
 }
 
 /*
- *Test que les film régulier n'ait pas de prix bonus
+ *Test que les film régulier n'ait pas de bonus
  */
 
 TEST(rental_test,NoBonusOnRegularMovie){

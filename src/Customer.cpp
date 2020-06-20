@@ -16,8 +16,6 @@ string Customer::statement()
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
     for ( const Rental &rental : _rentals ) {
-        double thisAmount = 0;
-        thisAmount += rental.getAmount();
 
         // add frequent renter points
         frequentRenterPoints++;
@@ -26,8 +24,8 @@ string Customer::statement()
 
         // show figures for this rental
         result << "\t" << rental.getMovie().getTitle() << "\t"
-               << thisAmount << "\n";
-        totalAmount += thisAmount;
+               << rental.getAmount() << "\n";
+        totalAmount += rental.getAmount();
     }
     // add footer lines
     result << "Amount owed is " << totalAmount << "\n";
