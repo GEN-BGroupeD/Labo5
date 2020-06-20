@@ -41,6 +41,6 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # Trivial example using gtest and gmock
-add_executable(example src/Customer.h src/Customer.cpp Test/CustomerTest.cpp Test/RentalTest.cpp src/Rental.cpp)
+add_executable(example src/Customer.h src/Customer.cpp Test/CustomerTest.cpp Test/RentalTest.cpp src/Rental.cpp Test/MovieTest.cpp)
 target_link_libraries(example gtest gmock_main)
 add_test(NAME example_test COMMAND example)
