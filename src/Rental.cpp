@@ -26,3 +26,10 @@ double Rental::getAmount() const {
     }
     return thisAmount;
 }
+
+int Rental::getBonus() const {
+    if ((getMovie().getPriceCode() == Movie::NEW_RELEASE)
+        && getDaysRented() > 1)
+        return 1;
+    return 0;
+}

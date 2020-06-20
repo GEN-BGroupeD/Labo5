@@ -17,8 +17,6 @@ public:
 private:
     std::string _name;
     std::vector< Rental > _rentals;
-
-    int getBonus(int frequentRenterPoints, const Rental &rental) const;
 };
 
 inline Customer::

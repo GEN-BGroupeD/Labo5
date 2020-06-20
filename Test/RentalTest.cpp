@@ -73,3 +73,61 @@ TEST(rental_test,ChildrenMovieHaveTheRightPriceWithMoreThanThreeDays){
 
     EXPECT_EQ(montant, attendu);
 }
+
+
+/*
+ *Test que les nouveau film sorti avec au maximum un jour d'emprunt ne donne pas de bonus sur le prix
+ */
+
+TEST(rental_test,newReleaseMovieWithLessThanTwoDayDonTGiveBonus){
+    Movie newMovie("new",1);
+    Rental rental(newMovie, 1);
+
+    double bonus = rental.getBonus();
+    double attendu = 0;
+
+    EXPECT_EQ(bonus, attendu);
+}
+
+
+/*
+ *Test que les nouveau film sorti avec plus d'un jour d'emprunt donne un bonus sur le prix
+ */
+
+TEST(rental_test,newReleaseMovieWithLessMoreThanOneDayDonTGiveBonus){
+    Movie newMovie("new",1);
+    Rental rental(newMovie, 2);
+
+    double bonus = rental.getBonus();
+    double attendu = 1;
+
+    EXPECT_EQ(bonus, attendu);
+}
+
+/*
+ *Test que les film pour enfant n'ait pas de prix bonus
+ */
+
+TEST(rental_test,NoBonusOnChildrenMovie){
+    Movie child("child",2);
+    Rental rental(child, 10);
+
+    double bonus = rental.getBonus();
+    double attendu = 0;
+
+    EXPECT_EQ(bonus, attendu);
+}
+
+/*
+ *Test que les film régulier n'ait pas de prix bonus
+ */
+
+TEST(rental_test,NoBonusOnRegularMovie){
+    Movie regular("regular",0);
+    Rental rental(regular, 10);
+
+    double bonus = rental.getBonus();
+    double attendu = 0;
+
+    EXPECT_EQ(bonus, attendu);
+}
