@@ -8,7 +8,11 @@ add_executable(Labo5
         src/Movie.cpp
         src/Movie.h
         src/Rental.h
-        src/Rental.cpp)
+        src/Rental.cpp
+        src/MoviePriceType.h
+        src/RegularePrice.h
+        src/ChildrenPrice.h
+        src/NewReleasePrice.h)
 
 include(CTest)
 
@@ -41,6 +45,7 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # Trivial example using gtest and gmock
-add_executable(example src/Customer.h src/Customer.cpp Test/CustomerTest.cpp Test/RentalTest.cpp src/Rental.cpp Test/MovieTest.cpp)
+add_executable(example src/Customer.h src/Customer.cpp Test/CustomerTest.cpp Test/RentalTest.cpp src/Rental.cpp
+        src/MoviePriceType.h src/ChildrenPrice.h src/NewReleasePrice.h src/RegularePrice.h Test/MovieTest.cpp)
 target_link_libraries(example gtest gmock_main)
 add_test(NAME example_test COMMAND example)

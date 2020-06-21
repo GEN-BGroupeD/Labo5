@@ -1,6 +1,9 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
+#include "../src/NewReleasePrice.h"
+#include "../src/ChildrenPrice.h"
+
 #include "../src/Rental.h"
 
 //Test pour Rental
@@ -10,7 +13,7 @@
  */
 
 TEST(rental_test,RegularHaveTheRightPriceWithMoreThanTwoDays){
-    Movie regularMovie("regular",0);
+    Movie regularMovie("regular");
     Rental rental(regularMovie, 9);
 
     double montant = rental.getAmount();
@@ -24,7 +27,7 @@ TEST(rental_test,RegularHaveTheRightPriceWithMoreThanTwoDays){
  */
 
 TEST(rental_test,RegularHaveTheRightPriceWithLessThanTwoDays){
-    Movie regularMovie("regular",0);
+    Movie regularMovie("regular");
     Rental rental(regularMovie, 1);
 
     double montant = rental.getAmount();
@@ -37,7 +40,7 @@ TEST(rental_test,RegularHaveTheRightPriceWithLessThanTwoDays){
  *Test pour les film nouvellement sorti
  */
 TEST(rental_test, newReleaseMovieHaveTheRightPrice){
-    Movie newRelease("new",1);
+    Movie newRelease("new",NewReleasePrice::getInstance());
     Rental rental(newRelease, 5);
 
     double montant = rental.getAmount();
@@ -51,7 +54,7 @@ TEST(rental_test, newReleaseMovieHaveTheRightPrice){
  */
 
 TEST(rental_test,ChildrenMovieHaveTheRightPriceWithLessThanThreeDays){
-    Movie children("child",2);
+    Movie children("child",ChildrenPrice::getInstance());
     Rental rental(children, 1);
 
     double montant = rental.getAmount();
@@ -65,7 +68,7 @@ TEST(rental_test,ChildrenMovieHaveTheRightPriceWithLessThanThreeDays){
  */
 
 TEST(rental_test,ChildrenMovieHaveTheRightPriceWithMoreThanThreeDays){
-    Movie children("child",2);
+    Movie children("child",ChildrenPrice::getInstance());
     Rental rental(children, 5);
 
     double montant = rental.getAmount();
@@ -80,7 +83,7 @@ TEST(rental_test,ChildrenMovieHaveTheRightPriceWithMoreThanThreeDays){
  */
 
 TEST(rental_test,newReleaseMovieWithLessThanTwoDayDonTGiveBonus){
-    Movie newMovie("new",1);
+    Movie newMovie("new",NewReleasePrice::getInstance());
     Rental rental(newMovie, 1);
 
     double bonus = rental.getBonus();
@@ -95,7 +98,7 @@ TEST(rental_test,newReleaseMovieWithLessThanTwoDayDonTGiveBonus){
  */
 
 TEST(rental_test,newReleaseMovieWithLessMoreThanOneDayDonTGiveBonus){
-    Movie newMovie("new",1);
+    Movie newMovie("new",NewReleasePrice::getInstance());
     Rental rental(newMovie, 2);
 
     double bonus = rental.getBonus();
@@ -109,7 +112,7 @@ TEST(rental_test,newReleaseMovieWithLessMoreThanOneDayDonTGiveBonus){
  */
 
 TEST(rental_test,NoBonusOnChildrenMovie){
-    Movie child("child",2);
+    Movie child("child",ChildrenPrice::getInstance());
     Rental rental(child, 10);
 
     double bonus = rental.getBonus();
@@ -123,7 +126,7 @@ TEST(rental_test,NoBonusOnChildrenMovie){
  */
 
 TEST(rental_test,NoBonusOnRegularMovie){
-    Movie regular("regular",0);
+    Movie regular("regular");
     Rental rental(regular, 10);
 
     double bonus = rental.getBonus();

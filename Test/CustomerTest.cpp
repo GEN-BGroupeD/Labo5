@@ -1,4 +1,6 @@
 #include "../src/Customer.h"
+#include "../src/NewReleasePrice.h"
+#include "../src/ChildrenPrice.h"
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
@@ -40,8 +42,8 @@ TEST(customer_tests, statementRentalFromMain) {
     Customer customer("Olivier");
 
     customer.addRental( Rental( Movie("Karate Kid"), 7));
-    customer.addRental( Rental( Movie( "Avengers: Endgame", Movie::NEW_RELEASE ), 5));
-    customer.addRental( Rental( Movie("Snow White", Movie::CHILDRENS), 3 ));
+    customer.addRental( Rental( Movie( "Avengers: Endgame", NewReleasePrice::getInstance()), 5));
+    customer.addRental( Rental( Movie("Snow White", ChildrenPrice::getInstance()), 3 ));
 
     std::string resultat = customer.statement();
     std::string attendu = "Rental Record for Olivier\n\tKarate Kid\t9.5\n"
