@@ -5,7 +5,6 @@ add_executable(Labo5
         src/Customer.cpp
         src/Customer.h
         src/main.cpp
-        src/Movie.cpp
         src/Movie.h
         src/Rental.h
         src/Rental.cpp
