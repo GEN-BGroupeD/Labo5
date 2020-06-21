@@ -23,3 +23,13 @@ TEST(movie_test, TestDefaultMovieType){
 
     EXPECT_EQ(resultat, attendu);
 }
+
+TEST(movie_test, TestRefularMovieType){
+
+    Movie movie("Karate Kid",RegularPrice::getInstance());
+
+    MoviePriceType* resultat = movie.getPriceType();
+    MoviePriceType* attendu = &RegularPrice::getInstance();
+
+    EXPECT_EQ(resultat, attendu);
+}
