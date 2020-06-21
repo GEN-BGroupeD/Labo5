@@ -2,6 +2,7 @@
 #ifndef RENTAL_H
 #define RENTAL_H
 #include "Movie.h"
+#include <ostream>
 
 class Rental {
 public:
@@ -11,6 +12,8 @@ public:
     const Movie& getMovie() const;
     double getAmount() const;
     int getBonus() const;
+
+    friend std::ostream& operator<< (std::ostream& ostream, const Rental& rental);
 
 private:
     Movie _movie;

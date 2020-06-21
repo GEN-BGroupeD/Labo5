@@ -23,8 +23,7 @@ string Customer::statement()
         frequentRenterPoints += rental.getBonus();
 
         // show figures for this rental
-        result << "\t" << rental.getMovie().getTitle() << "\t"
-               << rental.getAmount() << "\n";
+        result << rental << "\n";
         totalAmount += rental.getAmount();
     }
     // add footer lines

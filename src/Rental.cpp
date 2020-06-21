@@ -16,3 +16,9 @@ int Rental::getBonus() const {
         return _movie.getPriceType()->getBonus();
     return 0;
 }
+
+std::ostream& operator<< (std::ostream& ostream, const Rental& rental) {
+    ostream << "\t" << rental.getMovie().getTitle() << "\t"
+            << rental.getAmount();
+    return ostream;
+}
