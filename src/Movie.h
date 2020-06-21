@@ -16,17 +16,17 @@ public:
 
 private:
     std::string _title;
-    MoviePriceType* _priceCode;
+    MoviePriceType* _priceType;
 };
 
 inline Movie::Movie( const std::string& title, MoviePriceType& priceCode )
         : _title( title )
-        , _priceCode( &priceCode )
+        , _priceType( &priceCode )
 {}
 
-inline MoviePriceType* Movie::getPriceType() const { return _priceCode; }
+inline MoviePriceType* Movie::getPriceType() const { return _priceType; }
 
-inline void Movie::setPriceType( MoviePriceType& moviePriceType ) { _priceCode = &moviePriceType; }
+inline void Movie::setPriceType( MoviePriceType& moviePriceType ) { _priceType = &moviePriceType; }
 
 inline std::string Movie::
 getTitle() const { return _title; }
